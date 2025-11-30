@@ -1,4 +1,8 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
+
+using AdventOfCode.TestHelpers;
+
+using FluentAssertions;
 
 namespace AdventOfCode._2024;
 
@@ -20,5 +24,19 @@ public class Day3
         }
 
         return sum;
+    }
+
+    [Fact]
+    public async Task Example()
+    {
+        var input = await TestFile.ReadAllText("./InputFiles/Day3/example.txt");
+        Solve(input).Should().Be(161);
+    }
+
+    [Fact]
+    public async Task Solution()
+    {
+        var input = await TestFile.ReadAllText("./InputFiles/Day3/test.txt");
+        Solve(input).Should().Be(178794710);
     }
 }

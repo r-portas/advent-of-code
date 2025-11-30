@@ -1,4 +1,8 @@
-﻿namespace AdventOfCode._2024;
+using AdventOfCode.TestHelpers;
+
+using FluentAssertions;
+
+namespace AdventOfCode._2024;
 
 public class Day1
 {
@@ -21,5 +25,19 @@ public class Day1
             totalDistance += Math.Abs(first[i] - second[i]);
         }
         return totalDistance;
+    }
+
+    [Fact]
+    public async Task Example()
+    {
+        var input = await TestFile.ReadAllIntGrid("./InputFiles/Day1/example.txt");
+        Solve(input).Should().Be(11);
+    }
+
+    [Fact]
+    public async Task Solution()
+    {
+        var input = await TestFile.ReadAllIntGrid("./InputFiles/Day1/test.txt");
+        Solve(input).Should().Be(2742123);
     }
 }

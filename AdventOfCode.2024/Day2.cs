@@ -1,4 +1,8 @@
-﻿namespace AdventOfCode._2024;
+using AdventOfCode.TestHelpers;
+
+using FluentAssertions;
+
+namespace AdventOfCode._2024;
 
 public class Day2
 {
@@ -38,5 +42,18 @@ public class Day2
         }
 
         return diff >= 1 && diff <= 3;
+    }
+    [Fact]
+    public async Task Example()
+    {
+        var input = await TestFile.ReadAllIntGrid("./InputFiles/Day2/example.txt");
+        Solve(input).Should().Be(2);
+    }
+
+    [Fact]
+    public async Task Solution()
+    {
+        var input = await TestFile.ReadAllIntGrid("./InputFiles/Day2/test.txt");
+        Solve(input).Should().Be(213);
     }
 }

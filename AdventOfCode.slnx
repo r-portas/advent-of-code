@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="AdventOfCode.2024/AdventOfCode.2024.csproj" />
+  <Project Path="AdventOfCode.2025/AdventOfCode.2025.csproj" />
   <Project Path="AdventOfCode.TestHelpers/AdventOfCode.TestHelpers.csproj" />
 </Solution>

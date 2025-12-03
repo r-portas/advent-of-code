@@ -19,21 +19,26 @@ class SafeDial
         char dir = rotation[0];
         int distance = int.Parse(rotation[1..]);
 
-        if (dir == 'L')
+        for (int i = 0; i < distance; i++)
         {
-            Position -= distance;
-            while (Position < 0)
+            if (dir == 'L')
             {
-                Position += 100;
-                PassedZeroCount++;
+                Position--;
+                if (Position == -1)
+                {
+                    Position = 99;
+                }
             }
-        }
-        else
-        {
-            Position += distance;
-            while (Position > 99)
+            else
             {
-                Position -= 100;
+                Position++;
+                if (Position == 100)
+                {
+                    Position = 0;
+                }
+            }
+            if (Position == 0)
+            {
                 PassedZeroCount++;
             }
         }
@@ -41,7 +46,6 @@ class SafeDial
         if (Position == 0)
         {
             LandedOnZeroCount++;
-            PassedZeroCount++;
         }
     }
 }
@@ -68,7 +72,7 @@ public class Day1
     [Fact]
     public async Task ExamplePart2()
     {
-        var input = await TestFile.ReadAllText("./InputFiles/Day1/actual.txt");
+        var input = await TestFile.ReadAllText("./InputFiles/Day1/example.txt");
         Solve(input, true).ShouldBe(6);
     }
 
